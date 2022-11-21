@@ -1,0 +1,6 @@
+@use '../styles/partials/variables' as *;
+
+html body{
+  background-color: $color-primary;
+  color: white;
+}
