@@ -2,11 +2,12 @@
 
 import { store } from '../data/store';
 import CharacterCard from './CharacterCard.vue';
-
+import AppLoader from './AppLoader.vue';
 export default {  
   name: 'CharactersList',
   components:{
     CharacterCard,
+    AppLoader
   },
   data(){
     return{
@@ -30,9 +31,8 @@ export default {
         />
       </div>
 
-      <div v-else>
-        <h3>loading ...</h3>
-      </div>
+      
+      <AppLoader v-else />
 
     </div>
   </section>
@@ -43,7 +43,6 @@ export default {
 <style lang="scss" scoped>
 
 .container{
-  background-color: white;
 
   h3{
     color: black;

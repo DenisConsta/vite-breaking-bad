@@ -4,13 +4,15 @@ import axios from "axios";
 import { store } from "./data/store.js";
 
 import AppHeader from './components/AppHeader.vue'
+import AppSearch from "./components/AppSearch.vue";
 import CharactersList from './components/ChararctersList.vue'
 
 export default {
   name: 'App',
   components:{
     AppHeader,
-    CharactersList
+    CharactersList,
+    AppSearch
   },
   data(){
     return{
@@ -20,11 +22,14 @@ export default {
   },
   methods: {
     getCharacters() {
-      // endpoint https://api.sampleapis.com/rickandmorty/characters
-      //? Non è neccessario anteporre il this davanti a store in quanto è una var globale
       store.isLoaded = false;
       axios
-        .get(store.apiUrl)
+        .get(store.apiUrl, {
+          params:{
+            category: store.seriesToSearch,
+            
+          }
+        })
         .then((result) => {
           store.characterListData = result.data;
           store.isLoaded = true;
@@ -46,6 +51,7 @@ export default {
 
   <AppHeader />
   <main>
+    <AppSearch @startSearch="getCharacters()" />
     <CharactersList />
   </main>
 

@@ -29,8 +29,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: $color-primary;
+  background-color: #2c2c2c;
   padding-bottom: 1rem;
+
 
   img{
     max-height: 300px;
